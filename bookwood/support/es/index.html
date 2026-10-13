@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Soporte · Bookwood</title>
+<meta name="description" content="Respuestas a las preguntas que más nos hacen. Si la tuya no está aquí, escríbenos.">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../icon-512.png">
+<style>:root {
+  --bg: #F6F1EA; --card: #FFFFFF; --ink: #2B1D14; --ink2: #5A3825;
+  --muted: #7E6757; --accent: #C65F3A; --accent-text: #B34E29;
+  --track: #E7DCCD; --chip: rgba(198, 95, 58, .12);
+  --shadow: 0 1px 2px rgba(90, 56, 37, .08), 0 6px 18px rgba(90, 56, 37, .08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1B1410; --card: #271D17; --ink: #F3E7D7; --ink2: #D9C3A8;
+    --muted: #A88F7A; --accent: #E0855A; --accent-text: #E0855A;
+    --track: #3A2C22; --chip: rgba(224, 133, 90, .14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink2);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent-text); }
+svg {
+  fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 680px; margin: 0 auto; padding: 20px 16px 56px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--ink); font-weight: 600; font-size: 17px; text-decoration: none;
+}
+.brand img { border-radius: 9px; }
+.lang { position: relative; }
+.lang summary {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  list-style: none; padding: 8px 14px; border-radius: 999px;
+  background: var(--card); box-shadow: var(--shadow); color: var(--ink); font-size: 14px;
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary svg { width: 18px; height: 18px; }
+.lang ul {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: min(340px, calc(100vw - 32px));
+  margin: 0; padding: 6px; list-style: none;
+  background: var(--card); border-radius: 16px; box-shadow: var(--shadow);
+}
+.lang li a {
+  display: block; padding: 7px 12px; border-radius: 10px;
+  color: var(--ink); text-decoration: none;
+}
+.lang li a:hover { background: var(--chip); }
+.lang li a[aria-current] { color: var(--accent-text); font-weight: 600; }
+.kicker {
+  margin: 44px 0 8px; color: var(--accent-text);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+.headline {
+  margin: 0; color: var(--ink); font-weight: 600; font-size: 34px; line-height: 1.15;
+  font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+.lead { margin: 12px 0 0; font-size: 17px; }
+.headline { text-wrap: balance; }
+html[lang=ja] .headline { word-break: auto-phrase; }
+.lead, .fact p, .qa p, footer p { text-wrap: pretty; }
+h2 {
+  margin: 36px 4px 10px; color: var(--muted);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+html:is([lang=ar], [lang=hi], [lang=th], [lang=ja], [lang=ko], [lang^=zh]) :is(h2, .kicker) {
+  letter-spacing: 0;
+}
+/* Korecede satır sözcük arasında kırılır, hece arasında değil. */
+html[lang=ko] body { word-break: keep-all; }
+.card { display: block; background: var(--card); border-radius: 20px; box-shadow: var(--shadow); padding: 4px 0; }
+.card.solo, .card.contact { margin-top: 14px; }
+.fact { display: flex; gap: 14px; padding: 0 20px; }
+.icon {
+  flex: none; display: grid; place-items: center; width: 38px; height: 38px;
+  border-radius: 50%; background: var(--chip); color: var(--accent-text);
+}
+.icon svg { width: 20px; height: 20px; }
+.fact .icon { margin-top: 16px; }
+.fact .text { flex: 1; min-width: 0; padding: 16px 0; }
+.fact + .fact .text { border-top: 1px solid var(--track); }
+h3 { margin: 0 0 4px; color: var(--ink); font-size: 16px; font-weight: 600; line-height: 1.35; }
+.fact p { margin: 0; font-size: 15px; line-height: 1.55; }
+.more-links { display: flex; flex-wrap: wrap; gap: 0 20px; }
+.more {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  font-weight: 600; font-size: 15px; text-decoration: none;
+}
+.more:hover { text-decoration: underline; }
+.more svg { width: 16px; height: 16px; }
+[dir=rtl] :is(.ext, .fwd) { transform: scaleX(-1); }
+.qa summary {
+  display: flex; gap: 14px; padding: 0 20px; cursor: pointer; list-style: none;
+}
+.qa summary::-webkit-details-marker { display: none; }
+.qa .icon { margin-top: 14px; }
+.qa .row { flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 10px; padding: 14px 0; }
+.qa + .qa .row { border-top: 1px solid var(--track); }
+.qa .q { flex: 1; min-width: 0; margin-top: 8px; color: var(--ink); font-weight: 600; line-height: 1.35; }
+.chev { flex: none; width: 22px; height: 22px; margin-top: 7px; color: var(--muted); transition: transform .2s ease; }
+.qa[open] .chev { transform: rotate(180deg); }
+.qa p { margin: -6px 0 0; padding: 0 52px 18px 72px; font-size: 15px; line-height: 1.55; }
+[dir=rtl] .qa p { padding: 0 72px 18px 52px; }
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+.contact {
+  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+  color: var(--ink2); text-decoration: none;
+}
+.contact .text { flex: 1; min-width: 0; }
+.contact strong { display: block; color: var(--ink); font-weight: 600; }
+.contact .address { overflow-wrap: anywhere; }
+.contact .ext { flex: none; width: 20px; height: 20px; color: var(--muted); }
+footer { margin: 32px 4px 0; padding-top: 18px; border-top: 1px solid var(--track); color: var(--muted); font-size: 14px; }
+footer p { margin: 0 0 4px; }
+.documents { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 14px; }
+.documents a { color: var(--ink2); font-weight: 600; text-decoration: none; }
+.documents a:hover { text-decoration: underline; }
+.documents a[aria-current] { color: var(--accent-text); }
+.landing { text-align: center; padding-top: 72px; }
+.appicon { border-radius: 26px; box-shadow: var(--shadow); }
+.landing .headline { margin-top: 24px; font-size: 40px; }
+.landing .lead { max-width: 30em; margin-inline: auto; }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.links a {
+  padding: 10px 18px; border-radius: 999px; background: var(--card);
+  box-shadow: var(--shadow); font-weight: 600; text-decoration: none;
+}
+@media (max-width: 420px) {
+  .headline { font-size: 29px; }
+  .fact, .qa summary { padding: 0 16px; }
+  .qa p { padding: 0 48px 18px 68px; }
+  [dir=rtl] .qa p { padding: 0 68px 18px 48px; }
+  .contact { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="brand" href="../../../"><img src="../../icon.svg" alt="" width="36" height="36"><span>Bookwood</span></a>
+<details class="lang">
+<summary><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5z"/></svg><span>Español</span></summary>
+<ul>
+<li><a href="../en/" lang="en" hreflang="en">English</a></li>
+<li><a href="../tr/" lang="tr" hreflang="tr">Türkçe</a></li>
+<li><a href="../es/" lang="es" hreflang="es" aria-current="page">Español</a></li>
+<li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li>
+<li><a href="../de/" lang="de" hreflang="de">Deutsch</a></li>
+<li><a href="../it/" lang="it" hreflang="it">Italiano</a></li>
+<li><a href="../pt/" lang="pt-BR" hreflang="pt-BR">Português</a></li>
+<li><a href="../ru/" lang="ru" hreflang="ru">Русский</a></li>
+<li><a href="../ar/" lang="ar" hreflang="ar">العربية</a></li>
+<li><a href="../hi/" lang="hi" hreflang="hi">हिन्दी</a></li>
+<li><a href="../id/" lang="id" hreflang="id">Bahasa Indonesia</a></li>
+<li><a href="../vi/" lang="vi" hreflang="vi">Tiếng Việt</a></li>
+<li><a href="../th/" lang="th" hreflang="th">ไทย</a></li>
+<li><a href="../ja/" lang="ja" hreflang="ja">日本語</a></li>
+<li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li>
+<li><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a></li>
+<li><a href="../zh-hant/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a></li>
+</ul>
+</details>
+</header>
+<main>
+<h1 class="kicker">Soporte</h1>
+<p class="headline">¿Cómo podemos ayudarte?</p>
+<p class="lead">Respuestas a las preguntas que más nos hacen. Si la tuya no está aquí, escríbenos.</p>
+<h2>Tu biblioteca</h2>
+<div class="card">
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="6.5" y="2.8" width="11" height="18.4" rx="2.4"/><path d="M10.6 18h2.8"/></svg></span><span class="row"><span class="q">¿Cómo paso mi biblioteca a un teléfono nuevo?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>En tu teléfono antiguo, abre Ajustes › Copia de seguridad y toca «Hacer copia ahora». Guarda el archivo en un sitio al que pueda acceder tu teléfono nuevo, como Google Drive, iCloud Drive o un ordenador. Después, instala Bookwood en el teléfono nuevo, abre la misma sección y toca «Restaurar una copia». Las copias de seguridad funcionan entre iPhone y Android en ambos sentidos.</p>
+</details>
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.8" y="4.5" width="13" height="10" rx="1.8"/><path d="M5.8 18.5h7"/><rect x="16.8" y="9" width="4.6" height="10" rx="1.4"/></svg></span><span class="row"><span class="q">¿Puedo usar Bookwood en dos dispositivos?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Sí, pero no se sincronizan, porque Bookwood no tiene cuentas ni servidor: cada dispositivo guarda su propia biblioteca. Para copiar tu biblioteca a otro dispositivo, haz una copia de seguridad y restáurala allí. Al restaurarla, se sustituye la biblioteca de ese dispositivo.</p>
+</details>
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 4v15"/><path d="M4.5 7.5L8 4l3.5 3.5"/><path d="M16 20V5"/><path d="M12.5 16.5L16 20l3.5-3.5"/></svg></span><span class="row"><span class="q">¿Puedo traer mis libros de otra app?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Sí. Exporta tu biblioteca de esa app como archivo CSV (suele estar en los ajustes o en la página de la cuenta) y luego elígelo en Ajustes › Importar y exportar. Los libros que ya están en tu biblioteca se omiten.</p>
+</details>
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.6" cy="10.6" r="6"/><path d="M15.1 15.1l4.9 4.9"/><path d="M8.6 8.6l4 4"/><path d="M12.6 8.6l-4 4"/></svg></span><span class="row"><span class="q">Bookwood no encuentra mi libro. ¿Qué puedo hacer?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Los datos de los libros vienen de Open Library, que no tiene todos los libros. Toca «Introducir a mano» y escribe tú los datos; el ISBN se rellena solo. También puedes añadir el libro a Open Library para que lo encuentre cualquiera que lo escanee después.</p>
+</details>
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.8 9a13.5 13.5 0 0 1 18.4 0"/><path d="M5.8 12.2a9 9 0 0 1 12.4 0"/><path d="M8.9 15.4a4.4 4.4 0 0 1 6.2 0"/><path d="M12 19h.01"/><path d="M4 4l16 16"/></svg></span><span class="row"><span class="q">¿Bookwood funciona sin conexión?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Sí. Tus estantes, préstamos, estadísticas y libros electrónicos funcionan sin conexión. Solo la búsqueda de libros nuevos y los anuncios necesitan internet; los libros que escaneas sin conexión se añaden cuando vuelves a estar en línea.</p>
+</details>
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 6.5h15"/><path d="M9.5 6.5V4.8c0-.7.6-1.3 1.3-1.3h2.4c.7 0 1.3.6 1.3 1.3v1.7"/><path d="M6.5 6.5l.9 12.3a1.8 1.8 0 0 0 1.8 1.7h5.6a1.8 1.8 0 0 0 1.8-1.7l.9-12.3"/><path d="M10.2 10.5v6"/><path d="M13.8 10.5v6"/></svg></span><span class="row"><span class="q">¿Cómo borro mis datos?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Todo lo que guarda Bookwood está en tu dispositivo. Los libros, estantes y bibliotecas que eliminas esperan 30 días en la «Papelera», y puedes vaciarla en cualquier momento. Al borrar la app, se elimina todo de este dispositivo. Puede que queden copias en la copia de seguridad del propio teléfono y en los archivos de copia de seguridad que hayas guardado; bórralas allí donde las tengas.</p>
+</details>
+</div>
+<h2>Pro y compras</h2>
+<div class="card">
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8l3.8 3.6L12 5l4.2 6.6L20 8l-1.6 9.5H5.6z"/><path d="M5.6 20.5h12.8"/></svg></span><span class="row"><span class="q">¿Cómo activo Pro en mis otros dispositivos?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Usa la misma cuenta del App Store o de Google Play, abre Ajustes › Bookwood Pro y toca «Restaurar compras». Pro pasa de un dispositivo a otro dentro de la misma tienda; una compra hecha en el App Store no puede pasar a Google Play, ni al revés.</p>
+</details>
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 3.5h12v17l-2-1.4-2 1.4-2-1.4-2 1.4-2-1.4-2 1.4z"/><path d="M9 8.5h6"/><path d="M9 12h6"/><path d="M9 15.5h3.5"/></svg></span><span class="row"><span class="q">¿Cómo pido un reembolso?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Los pagos se hacen a través de la tienda, y los reembolsos también: en iPhone y iPad, pide el reembolso en reportaproblem.apple.com; en Android, abre tu historial de pedidos en Google Play. Cada tienda decide según sus propias normas. Si no lo consigues, escríbenos.</p>
+</details>
+<details class="qa">
+<summary><span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10.2v3.6c0 .7.5 1.2 1.2 1.2H7l6.4 4V5L7 9H5.2C4.5 9 4 9.5 4 10.2z"/><path d="M16.8 9.2a4 4 0 0 1 0 5.6"/><path d="M19.3 6.7a7.6 7.6 0 0 1 0 10.6"/></svg></span><span class="row"><span class="q">¿Por qué hay anuncios?</span><svg class="chev" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.5 9.5L12 15l5.5-5.5"/></svg></span></summary>
+<p>Los anuncios permiten que Bookwood sea gratis para todos, con todas las funciones y sin límite de libros. Nunca aparecen mientras lees o añades libros. Si prefieres no verlos, una compra única de Bookwood Pro los quita para siempre.</p>
+</details>
+</div>
+<a class="card contact" href="mailto:bookwood.support@gmail.com?subject=Soporte%20de%20Bookwood">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.6 7.6l7.4 5.4 7.4-5.4"/></svg></span>
+<span class="text"><strong>Escríbenos</strong><span class="address">bookwood.support@gmail.com</span></span>
+<svg class="ext" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10"/><path d="M19.5 4.5L11 13"/><path d="M17.5 14v3.5a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2H10"/></svg>
+</a>
+</main>
+<footer>
+<nav class="documents">
+<a href="../../privacy/es/">Política de privacidad</a>
+<a href="../../terms/es/">Condiciones de uso</a>
+<a href="../../disclaimer/es/">Exención de responsabilidad</a>
+<a href="../../support/es/" aria-current="page">Soporte</a>
+</nav>
+
+</footer>
+</div>
+</body>
+</html>

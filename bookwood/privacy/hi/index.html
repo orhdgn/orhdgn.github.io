@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="hi" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>गोपनीयता नीति · Bookwood</title>
+<meta name="description" content="Bookwood का कोई सर्वर नहीं है और आपको खाता भी नहीं बनाना पड़ता। आपकी किताबें, नोट्स और पढ़ने का इतिहास इसी डिवाइस पर रहते हैं और हमें कभी नहीं भेजे जाते।">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../icon-512.png">
+<style>:root {
+  --bg: #F6F1EA; --card: #FFFFFF; --ink: #2B1D14; --ink2: #5A3825;
+  --muted: #7E6757; --accent: #C65F3A; --accent-text: #B34E29;
+  --track: #E7DCCD; --chip: rgba(198, 95, 58, .12);
+  --shadow: 0 1px 2px rgba(90, 56, 37, .08), 0 6px 18px rgba(90, 56, 37, .08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1B1410; --card: #271D17; --ink: #F3E7D7; --ink2: #D9C3A8;
+    --muted: #A88F7A; --accent: #E0855A; --accent-text: #E0855A;
+    --track: #3A2C22; --chip: rgba(224, 133, 90, .14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink2);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent-text); }
+svg {
+  fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 680px; margin: 0 auto; padding: 20px 16px 56px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--ink); font-weight: 600; font-size: 17px; text-decoration: none;
+}
+.brand img { border-radius: 9px; }
+.lang { position: relative; }
+.lang summary {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  list-style: none; padding: 8px 14px; border-radius: 999px;
+  background: var(--card); box-shadow: var(--shadow); color: var(--ink); font-size: 14px;
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary svg { width: 18px; height: 18px; }
+.lang ul {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: min(340px, calc(100vw - 32px));
+  margin: 0; padding: 6px; list-style: none;
+  background: var(--card); border-radius: 16px; box-shadow: var(--shadow);
+}
+.lang li a {
+  display: block; padding: 7px 12px; border-radius: 10px;
+  color: var(--ink); text-decoration: none;
+}
+.lang li a:hover { background: var(--chip); }
+.lang li a[aria-current] { color: var(--accent-text); font-weight: 600; }
+.kicker {
+  margin: 44px 0 8px; color: var(--accent-text);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+.headline {
+  margin: 0; color: var(--ink); font-weight: 600; font-size: 34px; line-height: 1.15;
+  font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+.lead { margin: 12px 0 0; font-size: 17px; }
+.headline { text-wrap: balance; }
+html[lang=ja] .headline { word-break: auto-phrase; }
+.lead, .fact p, .qa p, footer p { text-wrap: pretty; }
+h2 {
+  margin: 36px 4px 10px; color: var(--muted);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+html:is([lang=ar], [lang=hi], [lang=th], [lang=ja], [lang=ko], [lang^=zh]) :is(h2, .kicker) {
+  letter-spacing: 0;
+}
+/* Korecede satır sözcük arasında kırılır, hece arasında değil. */
+html[lang=ko] body { word-break: keep-all; }
+.card { display: block; background: var(--card); border-radius: 20px; box-shadow: var(--shadow); padding: 4px 0; }
+.card.solo, .card.contact { margin-top: 14px; }
+.fact { display: flex; gap: 14px; padding: 0 20px; }
+.icon {
+  flex: none; display: grid; place-items: center; width: 38px; height: 38px;
+  border-radius: 50%; background: var(--chip); color: var(--accent-text);
+}
+.icon svg { width: 20px; height: 20px; }
+.fact .icon { margin-top: 16px; }
+.fact .text { flex: 1; min-width: 0; padding: 16px 0; }
+.fact + .fact .text { border-top: 1px solid var(--track); }
+h3 { margin: 0 0 4px; color: var(--ink); font-size: 16px; font-weight: 600; line-height: 1.35; }
+.fact p { margin: 0; font-size: 15px; line-height: 1.55; }
+.more-links { display: flex; flex-wrap: wrap; gap: 0 20px; }
+.more {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  font-weight: 600; font-size: 15px; text-decoration: none;
+}
+.more:hover { text-decoration: underline; }
+.more svg { width: 16px; height: 16px; }
+[dir=rtl] :is(.ext, .fwd) { transform: scaleX(-1); }
+.qa summary {
+  display: flex; gap: 14px; padding: 0 20px; cursor: pointer; list-style: none;
+}
+.qa summary::-webkit-details-marker { display: none; }
+.qa .icon { margin-top: 14px; }
+.qa .row { flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 10px; padding: 14px 0; }
+.qa + .qa .row { border-top: 1px solid var(--track); }
+.qa .q { flex: 1; min-width: 0; margin-top: 8px; color: var(--ink); font-weight: 600; line-height: 1.35; }
+.chev { flex: none; width: 22px; height: 22px; margin-top: 7px; color: var(--muted); transition: transform .2s ease; }
+.qa[open] .chev { transform: rotate(180deg); }
+.qa p { margin: -6px 0 0; padding: 0 52px 18px 72px; font-size: 15px; line-height: 1.55; }
+[dir=rtl] .qa p { padding: 0 72px 18px 52px; }
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+.contact {
+  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+  color: var(--ink2); text-decoration: none;
+}
+.contact .text { flex: 1; min-width: 0; }
+.contact strong { display: block; color: var(--ink); font-weight: 600; }
+.contact .address { overflow-wrap: anywhere; }
+.contact .ext { flex: none; width: 20px; height: 20px; color: var(--muted); }
+footer { margin: 32px 4px 0; padding-top: 18px; border-top: 1px solid var(--track); color: var(--muted); font-size: 14px; }
+footer p { margin: 0 0 4px; }
+.documents { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 14px; }
+.documents a { color: var(--ink2); font-weight: 600; text-decoration: none; }
+.documents a:hover { text-decoration: underline; }
+.documents a[aria-current] { color: var(--accent-text); }
+.landing { text-align: center; padding-top: 72px; }
+.appicon { border-radius: 26px; box-shadow: var(--shadow); }
+.landing .headline { margin-top: 24px; font-size: 40px; }
+.landing .lead { max-width: 30em; margin-inline: auto; }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.links a {
+  padding: 10px 18px; border-radius: 999px; background: var(--card);
+  box-shadow: var(--shadow); font-weight: 600; text-decoration: none;
+}
+@media (max-width: 420px) {
+  .headline { font-size: 29px; }
+  .fact, .qa summary { padding: 0 16px; }
+  .qa p { padding: 0 48px 18px 68px; }
+  [dir=rtl] .qa p { padding: 0 68px 18px 48px; }
+  .contact { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="brand" href="../../../"><img src="../../icon.svg" alt="" width="36" height="36"><span>Bookwood</span></a>
+<details class="lang">
+<summary><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5z"/></svg><span>हिन्दी</span></summary>
+<ul>
+<li><a href="../en/" lang="en" hreflang="en">English</a></li>
+<li><a href="../tr/" lang="tr" hreflang="tr">Türkçe</a></li>
+<li><a href="../es/" lang="es" hreflang="es">Español</a></li>
+<li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li>
+<li><a href="../de/" lang="de" hreflang="de">Deutsch</a></li>
+<li><a href="../it/" lang="it" hreflang="it">Italiano</a></li>
+<li><a href="../pt/" lang="pt-BR" hreflang="pt-BR">Português</a></li>
+<li><a href="../ru/" lang="ru" hreflang="ru">Русский</a></li>
+<li><a href="../ar/" lang="ar" hreflang="ar">العربية</a></li>
+<li><a href="../hi/" lang="hi" hreflang="hi" aria-current="page">हिन्दी</a></li>
+<li><a href="../id/" lang="id" hreflang="id">Bahasa Indonesia</a></li>
+<li><a href="../vi/" lang="vi" hreflang="vi">Tiếng Việt</a></li>
+<li><a href="../th/" lang="th" hreflang="th">ไทย</a></li>
+<li><a href="../ja/" lang="ja" hreflang="ja">日本語</a></li>
+<li><a href="../ko/" lang="ko" hreflang="ko">한국어</a></li>
+<li><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a></li>
+<li><a href="../zh-hant/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a></li>
+</ul>
+</details>
+</header>
+<main>
+<h1 class="kicker">गोपनीयता नीति</h1>
+<p class="headline">आपकी लाइब्रेरी आपके पास रहती है।</p>
+<p class="lead">Bookwood का कोई सर्वर नहीं है और आपको खाता भी नहीं बनाना पड़ता। आपकी किताबें, नोट्स और पढ़ने का इतिहास इसी डिवाइस पर रहते हैं और हमें कभी नहीं भेजे जाते।</p>
+<h2>इस डिवाइस पर</h2>
+<div class="card">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.6C9.6 5.1 6.6 4.7 3.6 5.4v13c3-.7 6-.3 8.4 1.2 2.4-1.5 5.4-1.9 8.4-1.2v-13c-3-.7-6-.3-8.4 1.2z"/><path d="M12 6.6v13"/></svg></span>
+<div class="text">
+<h3>आपकी लाइब्रेरी</h3>
+<p>किताबें, शेल्फ़, सीरीज़, नोट्स, हाइलाइट, पढ़ने का इतिहास, ई-बुक और जिन लोगों को आप किताबें उधार देते हैं या जिनसे लेते हैं, उनके नाम सिर्फ़ इसी डिवाइस पर सहेजे जाते हैं। ऐप हटाने पर ये इस डिवाइस से भी हट जाते हैं।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.6 12a7.4 7.4 0 1 0 2.2-5.3"/><path d="M4.6 4.4v4h4"/><path d="M12 8.4V12l2.6 1.6"/></svg></span>
+<div class="text">
+<h3>बैकअप</h3>
+<p>आपकी लाइब्रेरी आपके फ़ोन के अपने बैकअप (iCloud या Google) में शामिल होती है। Bookwood में बनाई गई बैकअप फ़ाइलें आपके चुने हुए पासवर्ड से एन्क्रिप्ट होती हैं; हम उसे न कभी जानते हैं, न कहीं सहेजते हैं।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 8.6A2.5 2.5 0 0 1 6.5 6.1h1.7L9.6 4h4.8l1.4 2.1h1.7A2.5 2.5 0 0 1 20 8.6v8a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 16.6z"/><circle cx="12" cy="12.4" r="3.3"/></svg></span>
+<div class="text">
+<h3>अनुमतियाँ</h3>
+<p>कैमरे का इस्तेमाल बारकोड और शेल्फ़ लेबल स्कैन करने और कवर की फ़ोटो लेने के लिए होता है, और आपकी फ़ोटो का सिर्फ़ कवर चुनने और, जब आप चाहें, आपके शेयर किए गए कार्ड और लेबल सेव करने के लिए। Face ID और फ़िंगरप्रिंट आपके फ़ोन में ही रहते हैं: Bookwood को सिर्फ़ यह पता चलता है कि लॉक खुला या नहीं। सूचनाओं का इस्तेमाल सिर्फ़ उधार दी या ली गई किताबों की वापसी की तारीख़ याद दिलाने के लिए होता है, और वे आपके फ़ोन पर ही तय होती हैं।</p>
+</div>
+</div>
+</div>
+<h2>आपके डिवाइस से क्या बाहर जाता है</h2>
+<div class="card">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10.6" cy="10.6" r="6"/><path d="M15.1 15.1l4.9 4.9"/></svg></span>
+<div class="text">
+<h3>किताबों की जानकारी</h3>
+<p>किसी किताब को खोजते समय सिर्फ़ उसका ISBN Open Library (openlibrary.org) को भेजा जाता है, जो Internet Archive की खुली लाइब्रेरी है। कवर भी वहीं से डाउनलोड होते हैं। किसी भी वेबसाइट की तरह, Open Library को भी वह IP पता दिखता है जहाँ से अनुरोध आता है।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10.2v3.6c0 .7.5 1.2 1.2 1.2H7l6.4 4V5L7 9H5.2C4.5 9 4 9.5 4 10.2z"/><path d="M16.8 9.2a4 4 0 0 1 0 5.6"/><path d="M19.3 6.7a7.6 7.6 0 0 1 0 10.6"/></svg></span>
+<div class="text">
+<h3>विज्ञापन</h3>
+<p>विज्ञापन Google AdMob दिखाता है। विज्ञापन दिखाने और मापने के लिए Google विज्ञापन ID जैसी डिवाइस जानकारी का इस्तेमाल कर सकता है। जहाँ क़ानून ज़रूरी बनाता है, वहाँ पहले आपसे पूछा जाता है, और आप सेटिंग्स में अपनी पसंद बदल सकते हैं। iPhone और iPad पर Bookwood कभी भी ऐप्स के बीच आपको ट्रैक करने की अनुमति नहीं माँगता। Bookwood Pro में विज्ञापन नहीं हैं।</p>
+<div class="more-links">
+<a class="more" href="https://policies.google.com/technologies/partner-sites?hl=hi">Google इस डेटा का इस्तेमाल कैसे करता है<svg class="ext" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10"/><path d="M19.5 4.5L11 13"/><path d="M17.5 14v3.5a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2H10"/></svg></a>
+</div>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 8.2h13l-.9 10.9a1.6 1.6 0 0 1-1.6 1.5H8a1.6 1.6 0 0 1-1.6-1.5z"/><path d="M9 10.2V7.4a3 3 0 0 1 6 0v2.8"/></svg></span>
+<div class="text">
+<h3>ख़रीदारी</h3>
+<p>Bookwood Pro, App Store या Google Play से ख़रीदा जाता है। हम आपकी भुगतान जानकारी कभी नहीं देखते।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 14a4 4 0 0 0 5.7 0l3-3A4 4 0 0 0 13 5.3l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span>
+<div class="text">
+<h3>लिंक और ईमेल</h3>
+<p>किताबों की दुकानों के लिंक और वेब सर्च आपके ब्राउज़र में खुलते हैं, जहाँ उस साइट के अपने नियम लागू होते हैं। फ़ीडबैक ईमेल आपके अपने ईमेल ऐप से जाते हैं; उनके अंत में सिर्फ़ ऐप का वर्शन, ऑपरेटिंग सिस्टम और भाषा जोड़ी जाती है।</p>
+</div>
+</div>
+</div>
+<div class="card solo">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 12s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6z"/><circle cx="12" cy="12" r="2.6"/><path d="M4.5 4.5l15 15"/></svg></span>
+<div class="text">
+<h3>कोई ट्रैकिंग नहीं</h3>
+<p>Bookwood में कोई एनालिटिक्स टूल नहीं है और यह दर्ज नहीं करता कि आप ऐप में क्या करते हैं। हालाँकि Android पर बारकोड स्कैनर (Google का ML Kit) Google को प्रदर्शन और इस्तेमाल के आँकड़े भेजता है, साथ ही डिवाइस और ऐप की जानकारी और पहचानकर्ता भी। अगर ऐप क्रैश हो जाए, तो फ़ोन की सेटिंग्स में अनुमति देने पर Apple या Google क्रैश रिपोर्ट हमारे साथ साझा कर सकते हैं।</p>
+</div>
+</div>
+</div>
+<h2>डेटा रखना, साझा करना और आपके अधिकार</h2>
+<div class="card">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 3.5h10"/><path d="M7 20.5h10"/><path d="M8.2 3.5v2.6c0 1.6.8 3 2.1 3.9L12 11.2l1.7-1.2a4.7 4.7 0 0 0 2.1-3.9V3.5"/><path d="M8.2 20.5v-2.6c0-1.6.8-3 2.1-3.9l1.7-1.2 1.7 1.2a4.7 4.7 0 0 1 2.1 3.9v2.6"/></svg></span>
+<div class="text">
+<h3>डेटा कितने समय तक रखा जाता है</h3>
+<p>आपकी लाइब्रेरी इस डिवाइस पर तब तक रहती है, जब तक आप उसे या ऐप को हटा नहीं देते; हटाई गई चीज़ें पहले 30 दिन ट्रैश में रहती हैं। बैकअप फ़ाइलें वहीं रहती हैं, जहाँ आप उन्हें सेव करते हैं। आप हमें जो ईमेल भेजते हैं, उन्हें सिर्फ़ तब तक रखा जाता है, जब तक आपकी मदद के लिए ज़रूरी हो। Google विज्ञापन डेटा को डेटा रखने की अपनी नीति के अनुसार रखता है।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.8a3.5 3.5 0 0 1 7 0v2.7"/><path d="M12 14.6v2"/></svg></span>
+<div class="text">
+<h3>सुरक्षा</h3>
+<p>किताबों की खोज और विज्ञापन एन्क्रिप्टेड कनेक्शन (HTTPS) से आते-जाते हैं। आपकी लाइब्रेरी ऐप के निजी स्टोरेज में रहती है, जिसे दूसरे ऐप नहीं पढ़ सकते, और आप Bookwood को Face ID या अपने फ़िंगरप्रिंट से लॉक कर सकते हैं। बैकअप फ़ाइलें आपके पासवर्ड से एन्क्रिप्ट होती हैं।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5z"/></svg></span>
+<div class="text">
+<h3>डेटा किसे मिलता है</h3>
+<p>खरीदारी संभालने वाले App Store या Google Play के अलावा, सिर्फ़ दो सेवाओं को Bookwood से डेटा मिलता है: किताबों की जानकारी के लिए Internet Archive (Open Library) और विज्ञापनों तथा Android पर बारकोड स्कैनर के लिए Google। दोनों इस डेटा की सुरक्षा कम से कम उतनी ही करते हैं, जितनी इस नीति में बताई गई है। वे इसे अमेरिका या दूसरे देशों में प्रोसेस कर सकते हैं; Google इसके लिए यूरोपीय संघ के मानक संविदात्मक खंड जैसे सुरक्षा उपाय अपनाता है। हम आपका डेटा कभी नहीं बेचते।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 4.5v15"/><path d="M8 19.5h8"/><path d="M5 7.5h14"/><path d="M5 7.5l-2.5 6h5z"/><path d="M19 7.5l-2.5 6h5z"/><path d="M2.5 13.5a2.5 2.5 0 0 0 5 0"/><path d="M16.5 13.5a2.5 2.5 0 0 0 5 0"/></svg></span>
+<div class="text">
+<h3>क़ानूनी आधार</h3>
+<p>किताबों की खोज आपके माँगे गए फ़ीचर को उपलब्ध कराने के लिए ज़रूरी है। जहाँ क़ानून ज़रूरी बनाता है, वहाँ निजीकृत विज्ञापन आपकी सहमति पर आधारित होते हैं; बाकी मामलों में विज्ञापन, Bookwood को मुफ़्त बनाए रखने के हमारे वैध हित पर आधारित होते हैं। आप “विज्ञापन” में बताए गए तरीके से कभी भी अपनी सहमति वापस ले सकते हैं।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="10" cy="8" r="3.6"/><path d="M3.8 19.5c.8-3.4 3.3-5.2 6.2-5.2 1.3 0 2.5.3 3.5 1"/><path d="M15 17.8l2 2 3.6-3.8"/></svg></span>
+<div class="text">
+<h3>आपके अधिकार</h3>
+<p>Bookwood जो कुछ भी सहेजता है, उसे आप ऐप में ही देख, ठीक कर और हटा सकते हैं, और ऐप हटाने पर यह सब इस डिवाइस से हट जाता है। आप अपने फ़ोन की सेटिंग्स में अपनी विज्ञापन ID रीसेट कर सकते हैं या हटा सकते हैं। यूरोपीय संघ का GDPR और तुर्किये का KVKK जैसे क़ानून आपको और अधिकार भी दे सकते हैं, जैसे अपने डेटा तक पहुँच, उसे ठीक करवाने, हटवाने और उसकी प्रोसेसिंग पर आपत्ति करने का अधिकार; इनका इस्तेमाल करने के लिए हमें ईमेल करें। आप अपने डेटा संरक्षण प्राधिकरण से शिकायत भी कर सकते हैं।</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.4 12a7.4 7.4 0 1 1-2.2-5.3"/><path d="M19.4 4.4v4h-4"/><path d="M12 8.4V12l2.6 1.6"/></svg></span>
+<div class="text">
+<h3>इस नीति में बदलाव</h3>
+<p>जब यह नीति बदलती है, तो सबसे नीचे दी गई तारीख़ भी बदल जाती है, और ज़रूरी बदलावों के बारे में ऐप के अपडेट नोट्स में भी बताया जाता है।</p>
+</div>
+</div>
+</div>
+<div class="card solo">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><circle cx="9" cy="11" r="2"/><path d="M6 15.6c.6-1.3 1.7-2 3-2s2.4.7 3 2"/><path d="M14.5 10h3"/><path d="M14.5 13.5h3"/></svg></span>
+<div class="text">
+<h3>डेवलपर और डेटा नियंत्रक</h3>
+<p>Bookwood के डेवलपर Orhun Doğan हैं, जो इस पेज पर बताई गई प्रोसेसिंग के लिए डेटा नियंत्रक भी हैं। आप हमसे bookwood.support@gmail.com पर संपर्क कर सकते हैं।</p>
+</div>
+</div>
+</div>
+<a class="card contact" href="mailto:bookwood.support@gmail.com?subject=%E0%A4%A8%E0%A4%BF%E0%A4%9C%E0%A4%A4%E0%A4%BE%20%E0%A4%B8%E0%A5%87%20%E0%A4%9C%E0%A5%81%E0%A4%A1%E0%A4%BC%E0%A4%BE%20%E0%A4%B8%E0%A4%B5%E0%A4%BE%E0%A4%B2">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.6 7.6l7.4 5.4 7.4-5.4"/></svg></span>
+<span class="text"><strong>निजता से जुड़े सवाल</strong><span class="address">bookwood.support@gmail.com</span></span>
+<svg class="ext" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10"/><path d="M19.5 4.5L11 13"/><path d="M17.5 14v3.5a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2H10"/></svg>
+</a>
+</main>
+<footer>
+<nav class="documents">
+<a href="../../privacy/hi/" aria-current="page">गोपनीयता नीति</a>
+<a href="../../terms/hi/">उपयोग की शर्तें</a>
+<a href="../../disclaimer/hi/">अस्वीकरण</a>
+<a href="../../support/hi/">सहायता</a>
+</nav>
+<p>Bookwood 13 साल से कम उम्र के बच्चों के लिए नहीं बना है।</p>
+<p>पिछला अपडेट: 13 अक्टूबर 2026</p>
+</footer>
+</div>
+</body>
+</html>

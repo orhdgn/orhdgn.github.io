@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="ko" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>면책 조항 · Bookwood</title>
+<meta name="description" content="Bookwood는 서재 정리와 독서, 대여 관리를 돕는 앱입니다. 이 페이지에서는 앱의 한계와 직접 챙겨야 할 부분을 알려 드립니다.">
+<link rel="icon" href="../../icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../icon-512.png">
+<style>:root {
+  --bg: #F6F1EA; --card: #FFFFFF; --ink: #2B1D14; --ink2: #5A3825;
+  --muted: #7E6757; --accent: #C65F3A; --accent-text: #B34E29;
+  --track: #E7DCCD; --chip: rgba(198, 95, 58, .12);
+  --shadow: 0 1px 2px rgba(90, 56, 37, .08), 0 6px 18px rgba(90, 56, 37, .08);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1B1410; --card: #271D17; --ink: #F3E7D7; --ink2: #D9C3A8;
+    --muted: #A88F7A; --accent: #E0855A; --accent-text: #E0855A;
+    --track: #3A2C22; --chip: rgba(224, 133, 90, .14);
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 18px rgba(0, 0, 0, .25);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink2);
+  font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent-text); }
+svg {
+  fill: none; stroke: currentColor; stroke-width: 1.8;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 680px; margin: 0 auto; padding: 20px 16px 56px; }
+header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: var(--ink); font-weight: 600; font-size: 17px; text-decoration: none;
+}
+.brand img { border-radius: 9px; }
+.lang { position: relative; }
+.lang summary {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  list-style: none; padding: 8px 14px; border-radius: 999px;
+  background: var(--card); box-shadow: var(--shadow); color: var(--ink); font-size: 14px;
+}
+.lang summary::-webkit-details-marker { display: none; }
+.lang summary svg { width: 18px; height: 18px; }
+.lang ul {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 8px); z-index: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px; width: min(340px, calc(100vw - 32px));
+  margin: 0; padding: 6px; list-style: none;
+  background: var(--card); border-radius: 16px; box-shadow: var(--shadow);
+}
+.lang li a {
+  display: block; padding: 7px 12px; border-radius: 10px;
+  color: var(--ink); text-decoration: none;
+}
+.lang li a:hover { background: var(--chip); }
+.lang li a[aria-current] { color: var(--accent-text); font-weight: 600; }
+.kicker {
+  margin: 44px 0 8px; color: var(--accent-text);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+.headline {
+  margin: 0; color: var(--ink); font-weight: 600; font-size: 34px; line-height: 1.15;
+  font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+}
+.lead { margin: 12px 0 0; font-size: 17px; }
+.headline { text-wrap: balance; }
+html[lang=ja] .headline { word-break: auto-phrase; }
+.lead, .fact p, .qa p, footer p { text-wrap: pretty; }
+h2 {
+  margin: 36px 4px 10px; color: var(--muted);
+  font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+}
+html:is([lang=ar], [lang=hi], [lang=th], [lang=ja], [lang=ko], [lang^=zh]) :is(h2, .kicker) {
+  letter-spacing: 0;
+}
+/* Korecede satır sözcük arasında kırılır, hece arasında değil. */
+html[lang=ko] body { word-break: keep-all; }
+.card { display: block; background: var(--card); border-radius: 20px; box-shadow: var(--shadow); padding: 4px 0; }
+.card.solo, .card.contact { margin-top: 14px; }
+.fact { display: flex; gap: 14px; padding: 0 20px; }
+.icon {
+  flex: none; display: grid; place-items: center; width: 38px; height: 38px;
+  border-radius: 50%; background: var(--chip); color: var(--accent-text);
+}
+.icon svg { width: 20px; height: 20px; }
+.fact .icon { margin-top: 16px; }
+.fact .text { flex: 1; min-width: 0; padding: 16px 0; }
+.fact + .fact .text { border-top: 1px solid var(--track); }
+h3 { margin: 0 0 4px; color: var(--ink); font-size: 16px; font-weight: 600; line-height: 1.35; }
+.fact p { margin: 0; font-size: 15px; line-height: 1.55; }
+.more-links { display: flex; flex-wrap: wrap; gap: 0 20px; }
+.more {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 10px;
+  font-weight: 600; font-size: 15px; text-decoration: none;
+}
+.more:hover { text-decoration: underline; }
+.more svg { width: 16px; height: 16px; }
+[dir=rtl] :is(.ext, .fwd) { transform: scaleX(-1); }
+.qa summary {
+  display: flex; gap: 14px; padding: 0 20px; cursor: pointer; list-style: none;
+}
+.qa summary::-webkit-details-marker { display: none; }
+.qa .icon { margin-top: 14px; }
+.qa .row { flex: 1; min-width: 0; display: flex; align-items: flex-start; gap: 10px; padding: 14px 0; }
+.qa + .qa .row { border-top: 1px solid var(--track); }
+.qa .q { flex: 1; min-width: 0; margin-top: 8px; color: var(--ink); font-weight: 600; line-height: 1.35; }
+.chev { flex: none; width: 22px; height: 22px; margin-top: 7px; color: var(--muted); transition: transform .2s ease; }
+.qa[open] .chev { transform: rotate(180deg); }
+.qa p { margin: -6px 0 0; padding: 0 52px 18px 72px; font-size: 15px; line-height: 1.55; }
+[dir=rtl] .qa p { padding: 0 72px 18px 52px; }
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+.contact {
+  display: flex; align-items: center; gap: 14px; padding: 16px 20px;
+  color: var(--ink2); text-decoration: none;
+}
+.contact .text { flex: 1; min-width: 0; }
+.contact strong { display: block; color: var(--ink); font-weight: 600; }
+.contact .address { overflow-wrap: anywhere; }
+.contact .ext { flex: none; width: 20px; height: 20px; color: var(--muted); }
+footer { margin: 32px 4px 0; padding-top: 18px; border-top: 1px solid var(--track); color: var(--muted); font-size: 14px; }
+footer p { margin: 0 0 4px; }
+.documents { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 14px; }
+.documents a { color: var(--ink2); font-weight: 600; text-decoration: none; }
+.documents a:hover { text-decoration: underline; }
+.documents a[aria-current] { color: var(--accent-text); }
+.landing { text-align: center; padding-top: 72px; }
+.appicon { border-radius: 26px; box-shadow: var(--shadow); }
+.landing .headline { margin-top: 24px; font-size: 40px; }
+.landing .lead { max-width: 30em; margin-inline: auto; }
+.links { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+.links a {
+  padding: 10px 18px; border-radius: 999px; background: var(--card);
+  box-shadow: var(--shadow); font-weight: 600; text-decoration: none;
+}
+@media (max-width: 420px) {
+  .headline { font-size: 29px; }
+  .fact, .qa summary { padding: 0 16px; }
+  .qa p { padding: 0 48px 18px 68px; }
+  [dir=rtl] .qa p { padding: 0 68px 18px 48px; }
+  .contact { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<a class="brand" href="../../../"><img src="../../icon.svg" alt="" width="36" height="36"><span>Bookwood</span></a>
+<details class="lang">
+<summary><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17"/><path d="M12 3.5c2.3 2.4 3.4 5.2 3.4 8.5s-1.1 6.1-3.4 8.5c-2.3-2.4-3.4-5.2-3.4-8.5S9.7 5.9 12 3.5z"/></svg><span>한국어</span></summary>
+<ul>
+<li><a href="../en/" lang="en" hreflang="en">English</a></li>
+<li><a href="../tr/" lang="tr" hreflang="tr">Türkçe</a></li>
+<li><a href="../es/" lang="es" hreflang="es">Español</a></li>
+<li><a href="../fr/" lang="fr" hreflang="fr">Français</a></li>
+<li><a href="../de/" lang="de" hreflang="de">Deutsch</a></li>
+<li><a href="../it/" lang="it" hreflang="it">Italiano</a></li>
+<li><a href="../pt/" lang="pt-BR" hreflang="pt-BR">Português</a></li>
+<li><a href="../ru/" lang="ru" hreflang="ru">Русский</a></li>
+<li><a href="../ar/" lang="ar" hreflang="ar">العربية</a></li>
+<li><a href="../hi/" lang="hi" hreflang="hi">हिन्दी</a></li>
+<li><a href="../id/" lang="id" hreflang="id">Bahasa Indonesia</a></li>
+<li><a href="../vi/" lang="vi" hreflang="vi">Tiếng Việt</a></li>
+<li><a href="../th/" lang="th" hreflang="th">ไทย</a></li>
+<li><a href="../ja/" lang="ja" hreflang="ja">日本語</a></li>
+<li><a href="../ko/" lang="ko" hreflang="ko" aria-current="page">한국어</a></li>
+<li><a href="../zh-hans/" lang="zh-Hans" hreflang="zh-Hans">简体中文</a></li>
+<li><a href="../zh-hant/" lang="zh-Hant" hreflang="zh-Hant">繁體中文</a></li>
+</ul>
+</details>
+</header>
+<main>
+<h1 class="kicker">면책 조항</h1>
+<p class="headline">약속할 수 있는 것과 없는 것.</p>
+<p class="lead">Bookwood는 서재 정리와 독서, 대여 관리를 돕는 앱입니다. 이 페이지에서는 앱의 한계와 직접 챙겨야 할 부분을 알려 드립니다.</p>
+<h2>앱 안의 정보</h2>
+<div class="card">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.6v.1"/></svg></span>
+<div class="text">
+<h3>책 정보와 표지</h3>
+<p>제목, 저자, 표지, 쪽수는 Open Library 같은 공개 출처에서 가져오므로 불완전하거나 틀릴 수 있습니다. 책 페이지의 ‘정보 수정’에서 고칠 수 있습니다. 표지 이미지의 권리는 출판사와 권리자에게 있으며, Bookwood는 책을 쉽게 알아볼 수 있도록 표지를 보여 줄 뿐입니다.</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2.8" y="8" width="18.4" height="8" rx="1.8"/><path d="M6.5 8v3"/><path d="M10 8v4.2"/><path d="M13.5 8v3"/><path d="M17 8v4.2"/></svg></span>
+<div class="text">
+<h3>추정치</h3>
+<p>책 두께, 책장에 들어가는 책의 수, 책장 정리 제안, 시리즈의 빠진 권, 독서 통계는 있는 정보로 계산합니다. 모두 대략적인 값이며, 책 정보가 빠졌거나 틀리면 결과도 어긋납니다.</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 8.5h14"/><path d="M15.5 5l3.5 3.5-3.5 3.5"/><path d="M19.5 15.5h-14"/><path d="M8.5 12L5 15.5 8.5 19"/></svg></span>
+<div class="text">
+<h3>대여와 알림</h3>
+<p>대여 기록은 직접 남기는 메모일 뿐, 계약이나 증거가 아닙니다. 반납일 알림은 휴대폰의 알림 설정에 따라 늦게 오거나 아예 오지 않을 수 있습니다.</p>
+</div>
+</div>
+</div>
+<h2>내 파일과 데이터</h2>
+<div class="card">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.6C9.6 5.1 6.6 4.7 3.6 5.4v13c3-.7 6-.3 8.4 1.2 2.4-1.5 5.4-1.9 8.4-1.2v-13c-3-.7-6-.3-8.4 1.2z"/><path d="M12 6.6v13"/></svg></span>
+<div class="text">
+<h3>전자책</h3>
+<p>Bookwood는 전자책을 판매하거나 내려받거나 공유하지 않습니다. 직접 추가한 파일만 열며, 복제 방지(DRM)를 우회하지 않습니다. 그 파일을 사용할 권리가 있는지는 직접 확인해야 합니다.</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.6 12a7.4 7.4 0 1 0 2.2-5.3"/><path d="M4.6 4.4v4h4"/><path d="M12 8.4V12l2.6 1.6"/></svg></span>
+<div class="text">
+<h3>백업</h3>
+<p>Bookwood에는 서버가 없으며, 서재는 이 기기에 저장됩니다. 휴대폰을 잃어버리거나 고장 나도 서재를 복원할 수 있도록 설정 › 백업에서 가끔 백업하세요. 백업 비밀번호는 어디에도 저장되지 않으므로, 잊어버리면 백업을 열 수 없습니다.</p>
+</div>
+</div>
+</div>
+<h2>다른 사이트와 브랜드</h2>
+<div class="card">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3.5 8l1.6-4.5h13.8L20.5 8"/><path d="M3.5 8a2.8 2.8 0 0 0 5.67 0 2.8 2.8 0 0 0 5.66 0 2.8 2.8 0 0 0 5.67 0"/><path d="M5 10.6V20h14v-9.4"/><path d="M10 20v-5h4v5"/></svg></span>
+<div class="text">
+<h3>서점과 다른 사이트</h3>
+<p>‘이 책 구매하기’ 링크와 앱의 다른 링크는 다른 사이트를 열며, 그 사이트의 콘텐츠, 가격, 판매는 해당 사이트가 책임집니다. ‘광고’ 표시가 붙은 서점 링크는 제휴 링크입니다. 이 링크를 통해 구매하면 Bookwood가 수수료를 받을 수 있으며, 추가로 내는 비용은 없습니다.</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 10.2v3.6c0 .7.5 1.2 1.2 1.2H7l6.4 4V5L7 9H5.2C4.5 9 4 9.5 4 10.2z"/><path d="M16.8 9.2a4 4 0 0 1 0 5.6"/><path d="M19.3 6.7a7.6 7.6 0 0 1 0 10.6"/></svg></span>
+<div class="text">
+<h3>광고</h3>
+<p>무료 버전의 광고는 Google AdMob이 선택하고 표시합니다. 광고와 광고가 여는 사이트는 광고주가 책임지며, 광고가 표시된다고 해서 Bookwood가 그 광고를 보증한다는 뜻은 아닙니다.</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M14.6 9.6a3.4 3.4 0 1 0 0 4.8"/></svg></span>
+<div class="text">
+<h3>이름과 상표</h3>
+<p>앱에 나오는 서점, 서비스, 제품(Open Library, Amazon, Google, Apple 등)의 이름은 각 소유자의 상표입니다. Bookwood는 독립 앱이며, 이들이 만들거나 보증한 앱이 아닙니다.</p>
+</div>
+</div>
+</div>
+<div class="card solo">
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.6C9.6 5.1 6.6 4.7 3.6 5.4v13c3-.7 6-.3 8.4 1.2 2.4-1.5 5.4-1.9 8.4-1.2v-13c-3-.7-6-.3-8.4 1.2z"/><path d="M12 6.6v13"/></svg></span>
+<div class="text">
+<h3>책의 내용</h3>
+<p>Bookwood는 앱에서 정보를 보여 주거나 파일을 여는 책과 그 밖의 출판물을 쓰거나 출판하거나 검토하지 않습니다. 불법적인 내용을 포함해 그 내용에 대한 책임은 저자와 출판사에 있으며, 저희는 이에 책임지지 않습니다. 책이 표시된다고 해서 Bookwood가 그 내용을 지지한다는 뜻은 아닙니다.</p>
+</div>
+</div>
+<div class="fact">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.2 9.8l5-5 4 4-5 5z"/><path d="M11.2 11.8l-6.7 6.7"/><path d="M13 20.5h7.5"/></svg></span>
+<div class="text">
+<h3>있는 그대로 제공</h3>
+<p>Bookwood는 있는 그대로 제공되며, 오류나 중단 없이 작동한다고 보증하지 않습니다. 법이 허용하는 범위에서 저희는 데이터 손실, 잘못된 정보, 다른 사이트에서의 구매로 생긴 손해에 책임지지 않습니다. 이는 법이 보장하는 소비자의 권리를 제한하지 않습니다.</p>
+</div>
+</div>
+</div>
+<a class="card contact" href="mailto:bookwood.support@gmail.com?subject=%EB%A9%B4%EC%B1%85%20%EC%A1%B0%ED%95%AD%20%EA%B4%80%EB%A0%A8%20%EB%AC%B8%EC%9D%98">
+<span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4.6 7.6l7.4 5.4 7.4-5.4"/></svg></span>
+<span class="text"><strong>권리자 및 기타 문의</strong><span class="address">bookwood.support@gmail.com</span></span>
+<svg class="ext" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10"/><path d="M19.5 4.5L11 13"/><path d="M17.5 14v3.5a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9a2 2 0 0 1 2-2H10"/></svg>
+</a>
+</main>
+<footer>
+<nav class="documents">
+<a href="../../privacy/ko/">개인정보 처리방침</a>
+<a href="../../terms/ko/">이용약관</a>
+<a href="../../disclaimer/ko/" aria-current="page">면책 조항</a>
+<a href="../../support/ko/">고객 지원</a>
+</nav>
+<p>최종 업데이트: 2026년 10월 13일</p>
+</footer>
+</div>
+</body>
+</html>

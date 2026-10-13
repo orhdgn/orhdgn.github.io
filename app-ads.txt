@@ -1,0 +1,1 @@
+# Bookwood: the AdMob publisher ID is added here before ads go live.
