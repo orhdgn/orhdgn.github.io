@@ -1,14 +1,7 @@
-# Bookwood
+# orhdgn.github.io
 
-The Bookwood app's privacy policy, terms of use, disclaimer and support
-page in 17 languages, plus app-ads.txt, published with GitHub Pages.
+Pages for my apps, published with GitHub Pages.
 
-- Bookwood: [bookwood/](bookwood/)
-- Privacy Policy: [bookwood/privacy/](bookwood/privacy/)
-- Terms of use: [bookwood/terms/](bookwood/terms/)
-- Disclaimer: [bookwood/disclaimer/](bookwood/disclaimer/)
-- Support: [bookwood/support/](bookwood/support/)
-- Contact: bookwood.support@gmail.com
+- [Bookwood](bookwood/): privacy policy, terms of use, disclaimer and support in 17 languages
 
-The pages are generated from the app's own texts, so the site and the app
-always say the same thing.
+`app-ads.txt` is the AdMob publisher record for every app here.
